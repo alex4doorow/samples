@@ -18,7 +18,7 @@ public class TestMapFilter {
         String chString
                 = Stream.of(ch)
                 .map(arr -> new String(arr))
-                .collect(Collectors.joining(" "));
+                .collect(Collectors.joining(","));
 
 
         // Printing concatenated string

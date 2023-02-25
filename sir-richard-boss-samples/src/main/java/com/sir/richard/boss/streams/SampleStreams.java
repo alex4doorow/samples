@@ -1,6 +1,8 @@
 package com.sir.richard.boss.streams;
 // https://habr.com/ru/company/otus/blog/658999/
 
+import com.sir.richard.boss.model.dto.User;
+
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -24,13 +26,11 @@ public class SampleStreams {
         sample.test4();
         sample.test6();
         sample.test8();
-
     }
 
     private void test1() {
         System.out.println("Test 1");
-        userList.stream()
-                .forEach(System.out::println);
+        userList.forEach(System.out::println);
     }
 
     private void test2() {
@@ -52,7 +52,7 @@ public class SampleStreams {
         System.out.println("Test 3");
         userList.stream()
                 .sorted(Comparator.comparing(User::getAge))
-                .collect(Collectors.toList())
+                .toList()
                 .forEach(System.out::println);
     }
 
@@ -62,7 +62,7 @@ public class SampleStreams {
                 .sorted(Comparator.comparing(User::getAge)
                         .thenComparing(User::getFirstName)
                         .thenComparing(User::getLastName))
-                .collect(Collectors.toList())
+                .toList()
                 .forEach(System.out::println);
     }
 

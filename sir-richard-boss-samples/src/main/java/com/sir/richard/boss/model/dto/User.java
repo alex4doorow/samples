@@ -1,4 +1,4 @@
-package com.sir.richard.boss.streams;
+package com.sir.richard.boss.model.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
