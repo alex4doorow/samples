@@ -1,0 +1,28 @@
+2023-02-25 13:30:40.472 [main] INFO  r.s.r.b.SirRichardBossApplicationTests - Starting SirRichardBossApplicationTests using Java 18.0.2.1 on galadriel with PID 5384 (started by hp in D:\src\--1-skillfactory\java\samples\sir-richard-boss-samples)
+2023-02-25 13:30:40.475 [main] DEBUG r.s.r.b.SirRichardBossApplicationTests - Running with Spring Boot v2.7.4, Spring v5.3.23
+2023-02-25 13:30:40.476 [main] INFO  r.s.r.b.SirRichardBossApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2023-02-25 13:30:41.161 [main] INFO  r.s.r.b.SirRichardBossApplicationTests - Started SirRichardBossApplicationTests in 1.021 seconds (JVM running for 2.593)
+2023-02-25 13:32:48.694 [main] INFO  r.s.r.b.SkillFactoryApplicationTests - Starting SkillFactoryApplicationTests using Java 18.0.2.1 on galadriel with PID 8216 (started by hp in D:\src\--1-skillfactory\java\samples\skillfactory)
+2023-02-25 13:32:48.699 [main] DEBUG r.s.r.b.SkillFactoryApplicationTests - Running with Spring Boot v2.7.4, Spring v5.3.23
+2023-02-25 13:32:48.700 [main] INFO  r.s.r.b.SkillFactoryApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2023-02-25 13:32:49.424 [main] INFO  r.s.r.b.SkillFactoryApplicationTests - Started SkillFactoryApplicationTests in 1.087 seconds (JVM running for 2.393)
+2023-02-25 13:35:58.931 [main] INFO  r.s.r.b.SkillFactoryApplicationTests - Starting SkillFactoryApplicationTests using Java 18.0.2.1 on galadriel with PID 1636 (started by hp in D:\src\--1-skillfactory\java\samples\skillfactory)
+2023-02-25 13:35:58.934 [main] DEBUG r.s.r.b.SkillFactoryApplicationTests - Running with Spring Boot v2.7.4, Spring v5.3.23
+2023-02-25 13:35:58.935 [main] INFO  r.s.r.b.SkillFactoryApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2023-02-25 13:35:59.567 [main] INFO  r.s.r.b.SkillFactoryApplicationTests - Started SkillFactoryApplicationTests in 0.976 seconds (JVM running for 2.312)
+2023-02-25 13:36:51.727 [main] INFO  r.s.r.b.SkillFactoryApplicationTests - Starting SkillFactoryApplicationTests using Java 18.0.2.1 on galadriel with PID 7516 (started by hp in D:\src\--1-skillfactory\java\samples\skillfactory)
+2023-02-25 13:36:51.730 [main] DEBUG r.s.r.b.SkillFactoryApplicationTests - Running with Spring Boot v2.7.4, Spring v5.3.23
+2023-02-25 13:36:51.731 [main] INFO  r.s.r.b.SkillFactoryApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2023-02-25 13:36:52.386 [main] INFO  r.s.r.b.SkillFactoryApplicationTests - Started SkillFactoryApplicationTests in 1.042 seconds (JVM running for 2.332)
+2023-02-25 13:40:50.027 [main] INFO  r.s.r.b.SkillFactoryApplicationTests - Starting SkillFactoryApplicationTests using Java 18.0.2.1 on galadriel with PID 5336 (started by hp in D:\src\--1-skillfactory\java\samples\skillfactory)
+2023-02-25 13:40:50.031 [main] DEBUG r.s.r.b.SkillFactoryApplicationTests - Running with Spring Boot v2.7.4, Spring v5.3.23
+2023-02-25 13:40:50.032 [main] INFO  r.s.r.b.SkillFactoryApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2023-02-25 13:40:50.662 [main] INFO  r.s.r.b.SkillFactoryApplicationTests - Started SkillFactoryApplicationTests in 0.996 seconds (JVM running for 2.365)
+2023-02-25 13:45:16.555 [main] INFO  r.s.r.b.SkillFactoryApplicationTests - Starting SkillFactoryApplicationTests using Java 18.0.2.1 with PID 5844 (started by hp in D:\src\--1-skillfactory\java\samples\skillfactory)
+2023-02-25 13:45:16.556 [main] DEBUG r.s.r.b.SkillFactoryApplicationTests - Running with Spring Boot v3.0.3, Spring v6.0.5
+2023-02-25 13:45:16.558 [main] INFO  r.s.r.b.SkillFactoryApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2023-02-25 13:45:17.134 [main] INFO  r.s.r.b.SkillFactoryApplicationTests - Started SkillFactoryApplicationTests in 0.963 seconds (process running for 2.539)
+2023-02-25 13:49:22.594 [main] INFO  r.s.r.b.SkillFactoryApplicationTests - Starting SkillFactoryApplicationTests using Java 18.0.2.1 with PID 6632 (started by hp in D:\src\--1-skillfactory\java\samples\skillfactory)
+2023-02-25 13:49:22.596 [main] DEBUG r.s.r.b.SkillFactoryApplicationTests - Running with Spring Boot v3.0.3, Spring v6.0.5
+2023-02-25 13:49:22.598 [main] INFO  r.s.r.b.SkillFactoryApplicationTests - No active profile set, falling back to 1 default profile: "default"
+2023-02-25 13:49:23.187 [main] INFO  r.s.r.b.SkillFactoryApplicationTests - Started SkillFactoryApplicationTests in 0.934 seconds (process running for 2.592)
