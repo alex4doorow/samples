@@ -25,12 +25,15 @@
     </encoder>
   </appender>
    
-  <logger name="org.springframework" level="error" additivity="true">
+  <logger name="org.springframework" level="debug" additivity="true">
         <appender-ref ref="STDOUT" />
   </logger>
-  <logger name="ru.sir.richard.boss" level="debug" additivity="true">
+  <logger name="com.sir.richard.boss" level="debug" additivity="true">
         <appender-ref ref="STDOUT" />
   </logger>
+    <logger name="com.epam" level="debug" additivity="true">
+        <appender-ref ref="STDOUT" />
+    </logger>
 
   <root level="error">
     <appender-ref ref="ROLLING_FILE" />
