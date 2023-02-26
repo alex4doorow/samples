@@ -15,5 +15,7 @@ public class AnotherMain4Lambda {
         System.out.println(main.analyzeUser(15, user, (i, u) -> user.getAge() + i));
         System.out.println(main.analyzeUser(15, user, (i, u) -> user.getAge() - i));
 
+        Runnable runnable = () -> System.out.println("Hello world two!");
+
     }
 }
