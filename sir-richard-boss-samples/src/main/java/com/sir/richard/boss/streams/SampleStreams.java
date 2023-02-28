@@ -1,6 +1,9 @@
 package com.sir.richard.boss.streams;
 // https://habr.com/ru/company/otus/blog/658999/
 
+import com.github.javafaker.Faker;
+import com.sir.richard.boss.model.animals.Animal;
+import com.sir.richard.boss.model.animals.Cat;
 import com.sir.richard.boss.model.dto.User;
 
 import java.util.*;
@@ -18,8 +21,24 @@ public class SampleStreams {
             new User(7, "Michael", "Tommy", 37, "EN")
     );
 
+    private static List<User> generateUsersByFaker(int count) {
+        if (count <= 0) {
+            return null;
+        }
+        List<User> users = new ArrayList<>();
+        for (int i = 0; i < count; i++) {
+            User user = new User(i, Faker.instance().name().firstName(), Faker.instance().name().lastName(),
+                    Faker.instance().number().numberBetween(18, 52),
+                    Faker.instance().nation().capitalCity());
+            users.add(user);
+        }
+        return users;
+    }
+
     public static void main(String... args) {
+
         SampleStreams sample = new SampleStreams();
+        sample.test0();
         sample.test1();
         sample.test2();
         sample.test3();
@@ -27,6 +46,24 @@ public class SampleStreams {
         sample.test6();
         sample.test8();
     }
+
+    private void test0() {
+        System.out.println("Test 0");
+        System.out.println("Faker users:");
+        List<User> users = generateUsersByFaker(101)
+                .stream()
+                .filter(u -> u.getAge() < 34)
+                .filter(u -> u.getFirstName().startsWith("A"))
+                .sorted(Comparator.comparing(User::getAge).reversed().thenComparing(User::getFirstName).thenComparing(User::getLastName))
+                .toList();
+
+        String stringUsers = users.stream()
+                .map(User::toString)
+                .collect(Collectors.joining("\n\r"));
+        System.out.println(stringUsers);
+
+    }
+
 
     private void test1() {
         System.out.println("Test 1");
@@ -36,16 +73,19 @@ public class SampleStreams {
     private void test2() {
         System.out.println("Test 2");
         userList.stream()
-                .map(u -> {
-                    return new User(
-                            u.getId(),
-                            "X " + u.getFirstName(),
-                            "Y " + u.getLastName(),
-                            u.getAge() + 10,
-                            u.getNationality());
-                })
-                .collect(Collectors.toList())
+                .map(u -> new User(
+                        u.getId(),
+                        "X " + u.getFirstName(),
+                        "Y " + u.getLastName(),
+                        u.getAge() + 10,
+                        u.getCapitalCity()))
+                .toList()
                 .forEach(System.out::println);
+
+        List<Cat> cats = userList.stream().map(u -> new Cat(u.getFirstName())).toList();
+        cats.forEach(System.out::println);
+
+
     }
 
     private void test3() {
