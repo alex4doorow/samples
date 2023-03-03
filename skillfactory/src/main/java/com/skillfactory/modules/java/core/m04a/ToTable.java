@@ -1,4 +1,4 @@
-package com.skillfactory.m04a;
+package com.skillfactory.modules.java.core.m04a;
 
 class ToTable {
     int[] data;
