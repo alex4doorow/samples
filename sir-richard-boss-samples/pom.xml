@@ -13,6 +13,9 @@
     <packaging>jar</packaging>
     <properties>
         <com.github.javafaker.version>1.0.2</com.github.javafaker.version>
+        <build.number>${buildNumber}</build.number>
+        <maven.build.timestamp.format>yyyy-MM-dd'T'HH:mm:ss'Z'</maven.build.timestamp.format>
+        <maven.build.timestamp>${maven.build.timestamp.format}</maven.build.timestamp>
     </properties>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
@@ -24,13 +27,12 @@
     </dependencies>
 
     <scm>
-        <connection>scm:git:https://github.com/alex4doorow@gmail.com/https://github.com/alex4doorow/samples.git
-        </connection>
+        <connection>scm:git:https://github.com/alex4doorow/https://github.com/alex4doorow/samples.git</connection>
         <developerConnection>
-            scm:git:https://github.com/alex4doorow@gmail.com/https://github.com/alex4doorow/samples.git
+            scm:git:https://github.com/alex4doorow/https://github.com/alex4doorow/samples.git
         </developerConnection>
         <tag>HEAD</tag>
-        <url>https://github.com/alex4doorow@gmail.com/https://github.com/alex4doorow/samples.git</url>
+        <url>https://github.com/alex4doorow/https://github.com/alex4doorow/samples.git</url>
     </scm>
     <build>
         <resources>
@@ -59,6 +61,29 @@
                 <configuration>
                     <doCheck>false</doCheck>
                     <doUpdate>false</doUpdate>
+                    <shortRevisionLength>7</shortRevisionLength>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>2.3.1</version>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <addDefaultImplementationEntries>true</addDefaultImplementationEntries>
+                            <addDefaultSpecificationEntries>true</addDefaultSpecificationEntries>
+                        </manifest>
+                        <manifestEntries>
+                            <Implementation-Version>${project.version}</Implementation-Version>
+                            <Built-By>${user.name}</Built-By>
+                            <Built-Date>${maven.build.timestamp}</Built-Date>
+                            <Scm-Brunch>${scmBranch}</Scm-Brunch>
+                            <Scm-Tag>${scm.tag}</Scm-Tag>
+                            <Scm-Build>${buildNumber}</Scm-Build>
+                            <Scm-Timestamp>${timestamp}</Scm-Timestamp>
+                        </manifestEntries>
+                    </archive>
                 </configuration>
             </plugin>
         </plugins>
