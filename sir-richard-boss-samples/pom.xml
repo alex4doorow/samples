@@ -78,7 +78,7 @@
                             <Implementation-Version>${project.version}</Implementation-Version>
                             <Built-By>${user.name}</Built-By>
                             <Built-Date>${maven.build.timestamp}</Built-Date>
-                            <Scm-Brunch>${scmBranch}</Scm-Brunch>
+                            <!-- <Scm-Brunch>${scmBranch}</Scm-Brunch> -->
                             <Scm-Tag>${scm.tag}</Scm-Tag>
                             <Scm-Build>${buildNumber}</Scm-Build>
                             <Scm-Timestamp>${timestamp}</Scm-Timestamp>
