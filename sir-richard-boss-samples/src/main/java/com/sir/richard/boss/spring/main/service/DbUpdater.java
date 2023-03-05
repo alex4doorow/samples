@@ -1,4 +1,4 @@
-package com.sir.richard.boss.spring.main.processor.impl;
+package com.sir.richard.boss.spring.main.service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,22 +21,13 @@ public class DbUpdater {
 	@Autowired
     @Qualifier("checkingDbUpdaterProcessors")
     private List<CheckingDbUpdaterProcessor> checkingDbUpdaterProcessors = new ArrayList<>();
-	
-	//@Autowired
-	//CheckingDbUpdateProcessors checkingDbUpdateProcessors;
-	
-	@Autowired(required = false)
-    @Qualifier("checkingDbUpdaterProcessorsAA")
-    private List<com.diximonline.upd.processor.CheckingDbUpdaterProcessor> checkingDbUpdaterProcessorsAA = new ArrayList<>();
-		
+
 	@PostConstruct
 	public void init() {
 		log.info("updatingDb.start, {}", checkingDbUpdaterProcessors);
 		
 		try {
 			checking();
-			//checkingDbUpdaterProcessorsAA.process();
-			log.info(checkingDbUpdaterProcessorsAA.toString());
 		} catch (Exception ex) {
 			// TODO Auto-generated catch block
 			log.error("Exception:", ex);

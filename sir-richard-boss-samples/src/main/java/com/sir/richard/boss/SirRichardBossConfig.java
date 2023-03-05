@@ -12,11 +12,14 @@ import com.sir.richard.boss.spring.main.processor.impl.CheckingForCreateDbUpdate
 import com.sir.richard.boss.spring.main.processor.impl.CheckingForUpdateDbUpdaterProcessor;
 
 @Configuration
-@ComponentScan(basePackages = {"com.sir.richard.boss.spring.main", "com.diximonline.upd.processor"})
+@ComponentScan(basePackages = {"com.sir.richard.boss.spring.main"})
 @ImportResource({"${app.beans-xml-path}"})
 public class SirRichardBossConfig {
-	
-	@Bean
+
+
+
+
+    @Bean
 	@Order(1)
     @Qualifier("checkingDbUpdaterProcessors")
     public CheckingDbUpdaterProcessor getCreatingProcessorOne() {
@@ -31,6 +34,8 @@ public class SirRichardBossConfig {
         //return new CheckingForUpdateDbUpdaterProcessor("second");
         return new CheckingForUpdateDbUpdaterProcessor();
     }
+
+    /*
 		
 	@Bean
     @Qualifier("checkingDbUpdaterProcessorsAA")
@@ -43,6 +48,6 @@ public class SirRichardBossConfig {
     public com.diximonline.upd.processor.CheckingDbUpdaterProcessor getCreatingProcessorAB() {
         return new com.diximonline.upd.processor.impl.CheckingForUpdateDbUpdaterProcessor();
     }
-
+    */
 
 }
