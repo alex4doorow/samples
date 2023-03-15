@@ -1,5 +1,6 @@
 package com.skillfactory.modules.java.core.m15.t025;
 
+import java.util.Comparator;
 import java.util.function.BiPredicate;
 import java.util.function.Supplier;
 
@@ -10,6 +11,8 @@ public class Main {
         task1("ss", "sd", (value1, value2) -> value1.endsWith(value2));
 
         task1("ss", "sd", String::endsWith);
+        Comparator<String> ss;
+
     }
 
     private static void task1(String s1, String s2, BiPredicate<String, String> param) {
