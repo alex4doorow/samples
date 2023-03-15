@@ -1,0 +1,3 @@
+ALTER TABLE D_REPORT_TYPES ADD DEF_DISP_FORMAT VARCHAR(64) DEFAULT 'PDF' NOT NULL;
+
+COMMENT ON COLUMN D_REPORT_TYPES.DEF_DISP_FORMAT IS 'Report source. Link to participant IDDefault display format (also inside REQ_TEMPLATE): -	HTML -	PDF -	DOC -	XLS -	XML -	DEF (default format)';
