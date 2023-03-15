@@ -10,7 +10,7 @@ public class Main {
 
     public static void main1(String[] args) throws IOException {
         // Change directory to the Git repository
-        File repoDir = new File("c:\\src\\diximonline\\NG-Modules\\");
+        File repoDir = new File("c:/src/diximonline/NG-Modules/");
         System.setProperty("user.dir", repoDir.getAbsolutePath());
 
         // Run the Git command
@@ -28,7 +28,7 @@ public class Main {
 
     public static void main(String[] args) {
         try {
-            File repoDir = new File("c:/src/diximonline/NG-Modules/");
+            File repoDir = new File("c:/src/--1-skillfactory/java/samples/sir-richard-boss-samples/");
             //File repoDir = new File("c:\\src\\diximonline\\rmaster\\rmaster-srv");
             System.setProperty("user.dir", repoDir.getAbsolutePath());
 
@@ -36,7 +36,9 @@ public class Main {
             //List<String> command = List.of("git", "log", "-1", "--date=format-local:\"%Y%m%d%H%M%S\"", "--pretty=format:\"%h/%cd\"", "--", " src/main/resources/db");
             //List<String> command = List.of("git", "status");
             //List<String> command = List.of("git", "log", "-1", "--date=format-local:\"%Y%m%d%H%M%S\"", "--pretty=format:\"%h/%cd\"", "--", " c:/src/diximonline/NG-Modules/core.db/src/main/resources/db");
-            List<String> command = List.of("git", "log", "-1", "--date=format-local:\"%Y%m%d%H%M%S\"", "--pretty=format:\"%h/%cd\"", "--", "src/main/resources");
+            //List<String> command = List.of("git", "log", "-1", "--date=format-local:\"%Y%m%d%H%M%S\"", "--pretty=format:\"%h/%cd\"", "--", " c:/src/--1-skillfactory/java/samples/sir-richard-boss-samples");
+            //List<String> command = List.of("git", "log", "-1", "--date=format-local:\"%Y%m%d%H%M%S\"", "--pretty=format:\"%h/%cd\"", "--", " *.*");
+            List<String> command = List.of("git", "log", "-10", "--date=format-local:\"%Y-%m-%d_%H:%M:%S\"", "--pretty=format:\"%h/%cd\"", "--", " ", "c:/src/--1-skillfactory/java/samples/sir-richard-boss-samples/src/main/resources/db");
 
             // Create a process builder for the command
             ProcessBuilder processBuilder = new ProcessBuilder(command);
@@ -51,7 +53,6 @@ public class Main {
             while ((line = reader.readLine()) != null) {
                 System.out.println(line);
             }
-
             // Wait for the process to finish
             int exitCode = process.waitFor();
             System.out.println("Process exited with code " + exitCode);
