@@ -1,8 +1,6 @@
 package com.sir.richard.boss.bl.entity;
 
-import java.io.Serializable;
-
-public interface BaseEntity<ID> extends Serializable {
+public interface BaseEntity<ID> {
     void setId(ID id);
     ID getId();
 }

@@ -1,6 +1,6 @@
 <configuration>
 
-  <property name="LOG_ROOT" value="src/main/logs" />
+  <property name="LOG_ROOT" value="c:/server/apache-tomcat-9.0.67/logs" />
   <property name="LOG_FILE_NAME" value="app" />
  
   <appender name="ROLLING_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
@@ -26,13 +26,13 @@
   </appender>
    
   <logger name="org.springframework" level="debug" additivity="true">
-        <appender-ref ref="ROLLING_FILE" />
+        <appender-ref ref="STDOUT" />
   </logger>
   <logger name="com.sir.richard.boss" level="debug" additivity="true">
-        <appender-ref ref="ROLLING_FILE" />
+        <appender-ref ref="STDOUT" />
   </logger>
 
   <root level="error">
-    <appender-ref ref="STDOUT" />
+    <appender-ref ref="ROLLING_FILE" />
   </root>
 </configuration>
