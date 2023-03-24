@@ -3,8 +3,11 @@ package com.sir.richard.boss.services.converters.in.dto;
 import com.sir.richard.boss.model.data.Product;
 import com.sir.richard.boss.rest.dto.DtoProduct;
 import com.sir.richard.boss.services.converters.IOConverter;
+import org.springframework.stereotype.Component;
 
+@Component
 public class InDtoProductConverter implements IOConverter<DtoProduct, Product> {
+
     @Override
     public Product convertTo(DtoProduct dtoProduct) {
 

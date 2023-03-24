@@ -1,9 +1,6 @@
 package com.sir.richard.boss.services.converters.out.dto;
 
-import com.sir.richard.boss.model.data.AnyCustomer;
-import com.sir.richard.boss.model.data.CompanyCustomer;
-import com.sir.richard.boss.model.data.Customer;
-import com.sir.richard.boss.model.data.Order;
+import com.sir.richard.boss.model.data.*;
 import com.sir.richard.boss.model.types.*;
 import com.sir.richard.boss.rest.dto.*;
 import com.sir.richard.boss.services.converters.IOConverter;
@@ -28,7 +25,7 @@ public class OutDtoOrderConverter implements IOConverter<Order, DtoOrder> {
         DtoOrder dtoOrder = new DtoOrder();
         dtoOrder.setId(order.getId());
         dtoOrder.setOrderNo(order.getOrderNo());
-        dtoOrder.setOrderDate(order.getOrderDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        dtoOrder.setOrderDate(order.getOrderDate());
         dtoOrder.setType(order.getOrderType());
         dtoOrder.setSource(order.getSourceType());
         dtoOrder.setAdvert(order.getAdvertType());
@@ -75,6 +72,17 @@ public class OutDtoOrderConverter implements IOConverter<Order, DtoOrder> {
                 .toList();
         dtoOrder.setItems(dtoOrderItems);
 
+        List<DtoOrderStatusItem> dtoOrderStatusItems = order.getStatuses()
+                .stream()
+                .map(item -> new DtoOrderStatusItem(
+                        item.getId(),
+                        //item.getNo(),
+                        item.getStatus(),
+                        item.getCrmStatus(),
+                        item.getCrmSubStatus(),
+                        item.getAddedDate()))
+                .toList();
+        dtoOrder.setStatuses(dtoOrderStatusItems);
         dtoOrder.setAddedDate(order.getAddedDate());
         dtoOrder.setModifiedDate(order.getModifiedDate());
         return dtoOrder;

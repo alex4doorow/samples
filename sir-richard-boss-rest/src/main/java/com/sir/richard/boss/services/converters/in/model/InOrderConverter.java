@@ -38,7 +38,7 @@ public class InOrderConverter implements IOPersistConverter<Order, TeOrder> {
     public TeOrder saveTo(Order inputOrder, TeOrder teSourceOrder) {
 
         teSourceOrder.setOrderNo(inputOrder.getOrderNo());
-        teSourceOrder.setOrderDate(inputOrder.getOrderDate().toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
+        teSourceOrder.setOrderDate(inputOrder.getOrderDate());
 
         Optional<TeWikiOrderType> teWikiOrderType = wikiOrderTypeRepository
                 .findById(Long.valueOf(inputOrder.getOrderType().getId()));
@@ -64,7 +64,7 @@ public class InOrderConverter implements IOPersistConverter<Order, TeOrder> {
         teSourceOrder.setEmailStatus(0);
 
         teSourceOrder.setOrderSubNo(0);
-        teSourceOrder.setOrderYear(DateTimeUtils.dateToLongYear(inputOrder.getOrderDate()));
+        teSourceOrder.setOrderYear(inputOrder.getOrderDate().getYear());
 
         teSourceOrder.setAnnotation(inputOrder.getAnnotation());
 

@@ -39,6 +39,7 @@ public class DtoOrder {
     private Map<OrderAmountTypes, BigDecimal> amounts = new HashMap<>();
 
     private List<DtoOrderItem> items = new ArrayList<>();
+    private List<DtoOrderStatusItem> statuses = new ArrayList<>();
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DateTimeUtils.DATA_FORMAT_UTC)
     private LocalDateTime addedDate;

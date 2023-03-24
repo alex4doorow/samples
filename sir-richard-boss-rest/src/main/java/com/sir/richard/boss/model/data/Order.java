@@ -4,9 +4,9 @@ import com.sir.richard.boss.model.types.*;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Setter
@@ -14,7 +14,7 @@ import java.util.List;
 public class Order extends AnyId {
 
     private Integer orderNo;
-    private Date orderDate;
+    private LocalDate orderDate;
     private OrderTypes orderType;
 
     private ProductCategory productCategory;
@@ -27,7 +27,7 @@ public class Order extends AnyId {
     private OrderDelivery delivery;
     //private List<OrderExternalCrm> externalCrms;
 
-    //private List<OrderStatusItem> statuses;
+    private List<OrderStatusItem> statuses;
     private List<OrderItem> items;
     private OrderAmounts amounts;
     private String annotation;
@@ -45,10 +45,10 @@ public class Order extends AnyId {
         this.store = StoreTypes.PM;
         this.delivery = new OrderDelivery(this);
         //this.externalCrms = new ArrayList<OrderExternalCrm>();
-        //this.statuses = new ArrayList<OrderStatusItem>();
+        this.statuses = new ArrayList<>();
         this.amounts = new OrderAmounts(this);
         //this.comments = new HashSet<Comment>();
-        this.items = new ArrayList<OrderItem>();
+        this.items = new ArrayList<>();
         //this.offer = new OrderOffer(this);
 
     }

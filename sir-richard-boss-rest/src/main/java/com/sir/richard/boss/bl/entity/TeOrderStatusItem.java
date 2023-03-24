@@ -24,9 +24,6 @@ public class TeOrderStatusItem implements BaseEntity<Long>, Serializable {
     @Column(name = "ID", updatable = false)
     private Long id;
 
-    @Column(name = "NO")
-    private Integer no;
-
     @ManyToOne
     @JoinColumn(name = "ORDER_ID", nullable = false)
     private TeOrder order;
@@ -34,6 +31,12 @@ public class TeOrderStatusItem implements BaseEntity<Long>, Serializable {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "STATUS", referencedColumnName = "ID", nullable = false)
     private TeWikiOrderStatus status;
+
+    @Column(name = "CRM_STATUS")
+    private String crmStatus;
+
+    @Column(name = "CRM_SUB_STATUS")
+    private String crmSubStatus;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_ADDED", referencedColumnName = "ID")
