@@ -75,6 +75,10 @@ public class TeOrder implements BaseEntity<Long>, Serializable {
     @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Set<TeOrderItem> items;
 
+    @OneToMany(mappedBy = "order", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Set<TeOrderStatusItem> statuses;
+
+
     @Column(name = "AMOUNT_TOTAL", nullable = false)
     private BigDecimal amountTotal;
 

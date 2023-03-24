@@ -12,6 +12,10 @@ public class SirRichardBossApplication {
 
     public static void main(String[] args) {
         ApplicationContext context = SpringApplication.run(SirRichardBossApplication.class, args);
+
+        Object bean = context.getBean("org.springframework.jms.core.JmsTemplate");
+        System.out.println("bean: " + bean.getClass().getCanonicalName());
+
 /*
         JmsTemplate jmsTemplate = context.getBean(JmsTemplate.class);
         // Send a message with a POJO - the template reuse the message converter

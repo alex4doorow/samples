@@ -64,7 +64,7 @@ public enum CarrierStatuses {
 		return annotation;
 	}
 
-	public static CarrierStatuses getValueById(int value) {
+	public static CarrierStatuses getValueById(Long value) {
 	
 		if (value == 0) {
 			return CarrierStatuses.UNKNOWN;

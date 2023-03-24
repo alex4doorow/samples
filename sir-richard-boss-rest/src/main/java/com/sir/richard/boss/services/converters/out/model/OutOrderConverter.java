@@ -36,7 +36,7 @@ public class OutOrderConverter implements IOConverter<TeOrder, Order> {
 
         order.setId(teOrder.getId());
         order.setOrderNo(teOrder.getOrderNo());
-        order.setOrderDate(Date.valueOf(teOrder.getOrderDate()));
+        order.setOrderDate(teOrder.getOrderDate());
         order.setOrderType(OrderTypes.getValueById(teOrder.getOrderType().getId()));
         order.setSourceType(OrderSourceTypes.getValueById(teOrder.getSourceType().getId()));
         order.setAdvertType(OrderAdvertTypes.getValueById(teOrder.getAdvertType().getId()));
@@ -81,7 +81,18 @@ public class OutOrderConverter implements IOConverter<TeOrder, Order> {
             order.getItems().add(item);
         });
 
-        //log.info("teOrder.getItems().size(): {}", teOrder.getItems().size());
+        teOrder.getStatuses().forEach(teStatus -> {
+
+            OrderStatusItem item = new OrderStatusItem(order);
+            item.setId(teStatus.getId());
+            item.setNo(0);
+            item.setStatus(OrderStatuses.getValueById(teStatus.getStatus().getId()));
+            item.setCrmStatus(teStatus.getCrmStatus());
+            item.setCrmSubStatus(teStatus.getCrmSubStatus());
+            item.setAddedDate(teStatus.getDateAdded());
+            order.getStatuses().add(item);
+
+        });
 
         order.setAddedDate(teOrder.getDateAdded());
         order.setModifiedDate(teOrder.getDateModified());

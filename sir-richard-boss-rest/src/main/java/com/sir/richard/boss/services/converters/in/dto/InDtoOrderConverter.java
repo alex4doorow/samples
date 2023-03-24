@@ -25,7 +25,7 @@ public class InDtoOrderConverter implements IOConverter<DtoOrder, Order> {
         Order order = new Order();
         order.setId(dtoOrder.getId());
         order.setOrderNo(dtoOrder.getOrderNo());
-        order.setOrderDate(Date.valueOf(dtoOrder.getOrderDate()));
+        order.setOrderDate(dtoOrder.getOrderDate());
         order.setOrderType(dtoOrder.getType());
         order.setSourceType(dtoOrder.getSource());
         order.setAdvertType(dtoOrder.getAdvert());
