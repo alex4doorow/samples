@@ -154,6 +154,13 @@ CREATE TABLE sr_wiki_order_status (
 	PRIMARY KEY(id)
 );
 
+/* статусы email sender */
+CREATE TABLE sr_wiki_order_email_status (
+	id TINYINT NOT NULL, /* идентификатор */
+	annotation VARCHAR(255) NOT NULL /* описание */,
+	PRIMARY KEY(id)
+);
+
 /* типы коментариев */
 CREATE TABLE sr_wiki_order_comment_type (
 	id TINYINT NOT NULL, /* идентификатор */

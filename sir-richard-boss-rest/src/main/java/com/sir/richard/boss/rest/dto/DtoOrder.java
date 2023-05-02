@@ -1,6 +1,7 @@
 package com.sir.richard.boss.rest.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.sir.richard.boss.model.types.*;
 import com.sir.richard.boss.utils.DateTimeUtils;
 import lombok.Data;
@@ -46,5 +47,6 @@ public class DtoOrder {
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = DateTimeUtils.DATA_FORMAT_UTC)
     private LocalDateTime modifiedDate;
 
-
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private String annotation;
 }

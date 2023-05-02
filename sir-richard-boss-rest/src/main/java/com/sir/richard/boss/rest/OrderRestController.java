@@ -43,7 +43,7 @@ public class OrderRestController {
     }
 
     @PostMapping()
-    Optional<DtoOrder> postData(@RequestBody String body) throws CoreException {
+    Optional<DtoOrder> addData(@RequestBody String body) throws CoreException {
         log.info("[START] {} request:\n{}", "ADD", body);
         DtoOrder dtoOrder = jsonMapper.fromJSON(body, DtoOrder.class);
         orderService.add(dtoOrder);
@@ -51,7 +51,7 @@ public class OrderRestController {
     }
 
     @PutMapping("/{id}")
-    ResponseEntity<DtoOrder> putData(@PathVariable Long id,
+    ResponseEntity<DtoOrder> updateData(@PathVariable Long id,
                                      @RequestBody String body) throws CoreException {
         log.info("[START] {} request:\n{}", "UPDATE", body);
         DtoOrder dtoOrder = jsonMapper.fromJSON(body, DtoOrder.class);

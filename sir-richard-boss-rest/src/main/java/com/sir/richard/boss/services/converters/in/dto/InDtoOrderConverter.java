@@ -44,6 +44,7 @@ public class InDtoOrderConverter implements IOConverter<DtoOrder, Order> {
 
         setAmountValue(OrderAmountTypes.TOTAL, dtoOrder, order);
         setAmountValue(OrderAmountTypes.TOTAL_WITH_DELIVERY, dtoOrder, order);
+        setAmountValue(OrderAmountTypes.BILL, dtoOrder, order);
         setAmountValue(OrderAmountTypes.SUPPLIER, dtoOrder, order);
         setAmountValue(OrderAmountTypes.MARGIN, dtoOrder, order);
         setAmountValue(OrderAmountTypes.POSTPAY, dtoOrder, order);
@@ -74,6 +75,7 @@ public class InDtoOrderConverter implements IOConverter<DtoOrder, Order> {
 
         order.setAddedDate(LocalDateTime.now());
         order.setModifiedDate(LocalDateTime.now());
+        order.setAnnotation(dtoOrder.getAnnotation());
         return order;
     }
 

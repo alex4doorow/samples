@@ -1,14 +1,15 @@
 package com.sir.richard.boss.services.converters.out.dto;
 
-import com.sir.richard.boss.model.data.*;
-import com.sir.richard.boss.model.types.*;
-import com.sir.richard.boss.rest.dto.*;
+import com.sir.richard.boss.model.data.Order;
+import com.sir.richard.boss.model.types.OrderAmountTypes;
+import com.sir.richard.boss.rest.dto.DtoCustomer;
+import com.sir.richard.boss.rest.dto.DtoOrder;
+import com.sir.richard.boss.rest.dto.DtoOrderItem;
+import com.sir.richard.boss.rest.dto.DtoOrderStatusItem;
 import com.sir.richard.boss.services.converters.IOConverter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.time.LocalDate;
-import java.time.ZoneId;
 import java.util.List;
 
 @Component
@@ -39,6 +40,7 @@ public class OutDtoOrderConverter implements IOConverter<Order, DtoOrder> {
         dtoOrder.getProductCategory().setGroup(order.getProductCategory().getGroup());
 
         dtoOrder.getAmounts().put(OrderAmountTypes.TOTAL, order.getAmounts().getValue(OrderAmountTypes.TOTAL));
+        dtoOrder.getAmounts().put(OrderAmountTypes.TOTAL_WITH_DELIVERY, order.getAmounts().getValue(OrderAmountTypes.TOTAL_WITH_DELIVERY));
         dtoOrder.getAmounts().put(OrderAmountTypes.BILL, order.getAmounts().getValue(OrderAmountTypes.BILL));
         dtoOrder.getAmounts().put(OrderAmountTypes.SUPPLIER, order.getAmounts().getValue(OrderAmountTypes.SUPPLIER));
         dtoOrder.getAmounts().put(OrderAmountTypes.MARGIN, order.getAmounts().getValue(OrderAmountTypes.MARGIN));
@@ -85,6 +87,8 @@ public class OutDtoOrderConverter implements IOConverter<Order, DtoOrder> {
         dtoOrder.setStatuses(dtoOrderStatusItems);
         dtoOrder.setAddedDate(order.getAddedDate());
         dtoOrder.setModifiedDate(order.getModifiedDate());
+        dtoOrder.setAnnotation(order.getAnnotation());
+
         return dtoOrder;
     }
 }

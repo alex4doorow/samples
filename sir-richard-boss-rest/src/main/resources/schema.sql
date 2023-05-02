@@ -282,6 +282,13 @@ CREATE TABLE SR_WIKI_ORDER_STATUS (
 	PRIMARY KEY(ID)
 );
 
+/* СТАТУСЫ EMAIL ЗАКАЗОВ */
+CREATE TABLE SR_WIKI_ORDER_EMAIL_STATUS (
+	ID INT NOT NULL, /* ИДЕНТИФИКАТОР */
+	ANNOTATION VARCHAR(255) NOT NULL /* ОПИСАНИЕ */,
+	PRIMARY KEY(ID)
+);
+
 /* ТИПЫ КОМЕНТАРИЕВ */
 CREATE TABLE SR_WIKI_ORDER_COMMENT_TYPE (
 	ID INT NOT NULL, /* ИДЕНТИФИКАТОР */

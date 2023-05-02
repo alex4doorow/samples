@@ -56,6 +56,7 @@ public class OrderService {
         TeOrder teOrder = new TeOrder();
         teOrder = inOrderConverter.saveTo(order, teOrder);
 
+        orderRepository.save(teOrder);
         return teOrder.getId();
     }
 
@@ -67,6 +68,8 @@ public class OrderService {
             throw new CoreException(CoreException.RECORD_WITH_ID_NOT_FOUND);
         }
         TeOrder teOrder = inOrderConverter.saveTo(order, teCurrentOrder.get());
+        orderRepository.save(teOrder);
+
         log.info("saved: {}", teOrder);
     }
 }
