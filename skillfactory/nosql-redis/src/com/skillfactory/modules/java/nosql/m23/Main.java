@@ -1,4 +1,4 @@
-package com.skillfactory.modules.java.jdbc.m22;
+package com.skillfactory.modules.java.nosql.m23;
 
 import redis.clients.jedis.Jedis;
 
