@@ -1,0 +1,66 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:jms="http://www.springframework.org/schema/jms"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd 
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd
+       http://www.springframework.org/schema/jms
+       https://www.springframework.org/schema/jms/spring-jms.xsd">
+    <context:property-placeholder location="classpath:application.properties"/>
+
+    <!--
+        <bean id="amqConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+            <property name="brokerURL" value="tcp://0.0.0.0:${spring.activemq.broker.port}"/>
+        </bean>
+    -->
+    <bean id="amqConnectionFactory" class="org.apache.activemq.ActiveMQConnectionFactory">
+        <property name="brokerURL" value="${spring.activemq.broker-url}"/>
+    </bean>
+
+    <bean id="jmsConnectionFactory" class="org.springframework.jms.connection.CachingConnectionFactory">
+        <property name="targetConnectionFactory" ref="amqConnectionFactory"/>
+    </bean>
+
+    <bean id="jacksonJmsMessageConverter" class="org.springframework.jms.support.converter.MappingJackson2MessageConverter">
+        <property name="typeIdPropertyName" value="_type"/>
+    </bean>
+
+    <bean id="jmsContainerFactory" class="org.springframework.jms.config.DefaultJmsListenerContainerFactory">
+        <property name="connectionFactory" ref="jmsConnectionFactory"/>
+        <property name="messageConverter" ref="jacksonJmsMessageConverter"/>
+        <property name="pubSubDomain" value="true"/>
+    </bean>
+
+    <bean id="myQueue" class="org.apache.activemq.command.ActiveMQQueue">
+        <constructor-arg value="myQueue" />
+    </bean>
+
+    <bean id="jmsContainer" class="org.springframework.jms.listener.DefaultMessageListenerContainer">
+        <property name="connectionFactory" ref="jmsConnectionFactory"/>
+        <property name="destinationName" ref="myQueue"/>
+    </bean>
+
+    <bean id="jmsTemplate" class="org.springframework.jms.core.JmsTemplate">
+        <property name="connectionFactory" ref="jmsConnectionFactory"/>
+    </bean>
+
+    <bean id="broker" class="org.apache.activemq.xbean.BrokerFactoryBean">
+        <property name="config" value="classpath:activemq.xml" />
+        <property name="start" value="true" />
+    </bean>
+
+    <bean id="openwire" class="com.diximonline.srv.postprocessor.CustomTransportConnector"/>
+    <bean id="customTransportListener" class="com.diximonline.srv.postprocessor.CustomTransportListener"/>
+
+    <!--  https://docs.spring.io/spring-framework/docs/current/reference/html/integration.html#jms  -->
+    <jms:listener-container connection-factory="jmsConnectionFactory" concurrency="10" task-executor="taskExecutor">
+        <jms:listener destination="#{'${bcrb.msgSender}' + '.IN'}" ref="jmsProducerForBcrb" method="onMessage"/>
+        <jms:listener destination="#{'${rptdb.rmasterWEB.msgSender}' + '.IN'}" ref="jmsProducerForRMasterWEBDB" method="onMessage"/>
+
+        <jms:listener destination="#{'${bcrb.msgSender}' + '.OUT'}" ref="bcrbJmsListener" method="onMessage"/>
+        <jms:listener destination="#{'${rptdb.rmasterWEB.msgSender}' + '.OUT'}" ref="bcrbJmsListener" method="onMessage"/>
+    </jms:listener-container>
+
+</beans>
