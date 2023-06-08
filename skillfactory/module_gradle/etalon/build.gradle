@@ -1,0 +1,88 @@
+buildscript {
+    repositories {
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath 'com.github.johnrengelman:shadow:8.1.1'
+    }
+}
+
+/*
+plugins {
+    id 'java'
+    id 'application'
+    id 'checkstyle'
+    id 'com.github.johnrengelman.shadow' version '8.1.1'
+}
+
+*/
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'application'
+//apply plugin: 'checkstyle'
+apply plugin: 'com.github.johnrengelman.shadow'
+
+
+mainClassName = 'com.skillfactory.modules.java.gradle.App'
+
+// tag::repositories[]
+repositories { 
+    mavenCentral() 
+}
+// end::repositories[]
+
+// tag::jar[]
+jar {
+    archiveBaseName = 'sf-etalon-gradle'
+    archiveVersion =  '0.1.0'
+}
+// end::jar[]
+
+// tag::dependencies[]
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    implementation "joda-time:joda-time:2.2"
+    implementation 'com.google.guava:guava:30.0-jre'
+    testImplementation "junit:junit:4.13.1"
+}
+
+shadowJar {
+    mainClassName = 'com.skillfactory.modules.java.gradle.App'
+}
+
+
+task hello {
+    group 'Skillfactory'
+    description 'Display hello message.'
+
+    doLast {
+        print 'Hello '
+    }
+}
+
+task bigHello {
+    group 'Skillfactory'
+    description 'Display big hello message.'
+
+    doLast {
+        println 'from Skillfactory'
+    }
+}
+
+task buildInfo {
+    doLast {
+        def cmd = "git rev-parse --short HEAD"
+//        def cmd = "git log -1 --date=format-local:\"%Y%m%d%H%M%S\" --pretty=format:\"%an %h/%cd\" -- *.sql alex4doorow dbb1440/20230606194049"
+        def proc = cmd.execute()
+        def revision = proc.text.trim()
+        print revision
+        file(buildDir.path + "/classes/java/main/revision.txt").text = revision
+    }
+}
+
+jar.dependsOn 'buildInfo'
+bigHello.dependsOn hello
+
