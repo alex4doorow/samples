@@ -13,6 +13,7 @@
     <description>SkillFactory samples</description>
     <modules>
         <module>nosql-mongodb</module>
+        <module>practice-24</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -26,6 +27,12 @@
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>30.0-jre</version>
         </dependency>
     </dependencies>
     <build>
