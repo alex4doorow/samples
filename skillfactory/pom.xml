@@ -11,12 +11,28 @@
     <artifactId>skillfactory-samples</artifactId>
     <name>skillfactory samples</name>
     <description>SkillFactory samples</description>
-    <packaging>jar</packaging>
+    <modules>
+        <module>nosql-mongodb</module>
+        <module>practice-24</module>
+    </modules>
+    <packaging>pom</packaging>
 
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.6.0</version>
+        </dependency>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/com.google.guava/guava -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>30.0-jre</version>
         </dependency>
     </dependencies>
     <build>
