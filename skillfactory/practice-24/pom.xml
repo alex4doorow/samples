@@ -8,41 +8,46 @@
         <artifactId>skillfactory-samples</artifactId>
         <version>4.3.0-SNAPSHOT</version>
     </parent>
-
     <groupId>com.skillfactory.modules.practice</groupId>
-    <artifactId>practice-24</artifactId>
-
+    <artifactId>sf-practice-24</artifactId>
     <properties>
         <maven.compiler.source>18</maven.compiler.source>
         <maven.compiler.target>18</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <org.apache.commons.version>3.12.0</org.apache.commons.version>
+        <commons-collections4.version>4.3</commons-collections4.version>
+        <org.apache.poi.version>5.2.3</org.apache.poi.version>
     </properties>
-
     <dependencies>
+        <!-- https://mvnrepository.com/artifact/com.github.javafaker/javafaker -->
+        <dependency>
+            <groupId>com.github.javafaker</groupId>
+            <artifactId>javafaker</artifactId>
+            <version>1.0.2</version>
+        </dependency>
         <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.12.0</version>
+            <version>${org.apache.commons.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-collections4 -->
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-collections4</artifactId>
-            <version>4.3</version>
+            <version>${commons-collections4.version}</version>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.apache.poi/poi-ooxml -->
         <dependency>
             <groupId>org.apache.poi</groupId>
             <artifactId>poi-ooxml</artifactId>
-            <version>5.2.3</version>
+            <version>${org.apache.poi.version}</version>
         </dependency>
         <dependency>
             <groupId>com.guicedee.services</groupId>
             <artifactId>apache-poi-ooxml</artifactId>
             <version>62</version>
         </dependency>
-
     </dependencies>
     <build>
         <plugins>
@@ -53,5 +58,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
