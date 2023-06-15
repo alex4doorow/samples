@@ -1,25 +1,23 @@
 package com.skillfactory.modules.practice;
 
-import com.github.javafaker.Faker;
 import com.skillfactory.modules.practice.model.Student;
 import com.skillfactory.modules.practice.model.University;
-import com.skillfactory.modules.practice.type.StudyProfile;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import java.util.List;
+
 
 public class Main {
 
+    private static final Logger log = LoggerFactory.getLogger(Main.class);
+
+
     public static void main(String[] args) {
+        List<University> universities = ExcelLoader.loadUniversitiesFromExcel("C:\\src\\--1-skillfactory\\java\\samples\\skillfactory\\practice-24\\src\\main\\resources\\universityInfo.xlsx");
+        List<Student> students = ExcelLoader.loadStudentsFromExcel("C:\\src\\--1-skillfactory\\java\\samples\\skillfactory\\practice-24\\src\\main\\resources\\universityInfo.xlsx");
+        log.info("universities: {}", universities);
+        log.info("students: {}", students);
 
-        Faker faker = new Faker();
-
-        University mgu = new University("mgu", "MGU", "MGU", 1789,  StudyProfile.PROGRAMMING);
-        University mvtu = new University("mvtu", "MVTU", "MVTU", 1789,  StudyProfile.ASTRONOMY);
-
-        Student elonMask = new Student(faker.name().fullName(), mgu.getId(), 5, 100);
-        Student steveJobs = new Student(faker.name().fullName(), mvtu.getId(), 3, 15);
-
-        System.out.println(mgu);
-        System.out.println(mvtu);
-        System.out.println(elonMask);
-        System.out.println(steveJobs);
     }
 }
