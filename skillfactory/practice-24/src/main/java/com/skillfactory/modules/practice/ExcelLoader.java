@@ -2,6 +2,7 @@ package com.skillfactory.modules.practice;
 
 import com.skillfactory.modules.practice.model.Student;
 import com.skillfactory.modules.practice.model.University;
+import com.skillfactory.modules.practice.model.comparator.FullNameStudentComparator;
 import com.skillfactory.modules.practice.type.StudyProfile;
 import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.xssf.usermodel.XSSFRow;
@@ -30,7 +31,6 @@ public class ExcelLoader {
     public static List<Student> loadStudentsFromExcel(String fileName) {
         ExcelLoader excelLoader = new ExcelLoader();
         return excelLoader.studentsFromExcel(fileName);
-
     }
 
     private List<University> universitiesFromExcel(String fileName) {
@@ -55,15 +55,14 @@ public class ExcelLoader {
             for (int i = startIndex; i <= myExcelSheet.getLastRowNum(); i++) {
                 row = myExcelSheet.getRow(i);
 
-                University raw = null;
+                University raw;
                 if (row.getCell(0) != null && row.getCell(0).getCellType() == CellType.STRING) {
                     universityId = row.getCell(0).getStringCellValue();
                     fullName = row.getCell(1).getStringCellValue();
                     shortName = row.getCell(2).getStringCellValue();
                     yearOfFoundation = row.getCell(3).getNumericCellValue();
                     profile = row.getCell(4).getStringCellValue();
-                    log.info("universityId: {}, {}, {}, {}", universityId, shortName, yearOfFoundation, profile);
-
+                    log.info("university: {}, {}, {}, {}", universityId, shortName, yearOfFoundation, profile);
                     raw = new University(universityId, fullName, shortName, yearOfFoundation.intValue(),
                             StudyProfile.valueOf(profile));
 
@@ -75,10 +74,11 @@ public class ExcelLoader {
             log.error("FileNotFoundException:", e);
         } catch (IOException e) {
             log.error("IOException:", e);
+        } catch (Exception e) {
+            log.error("Exception:", e);
         }
         return outputData;
     }
-
 
     private List<Student> studentsFromExcel(String fileName) {
         XSSFWorkbook myExcelBook;
@@ -99,12 +99,10 @@ public class ExcelLoader {
             for (int i = startIndex; i <= myExcelSheet.getLastRowNum(); i++) {
                 row = myExcelSheet.getRow(i);
 
-                Student raw = null;
+                Student raw;
                 if (row.getCell(0) != null && row.getCell(0).getCellType() == CellType.STRING) {
-
-
-                    fullName = row.getCell(0).getStringCellValue();
-                    universityId = row.getCell(1).getStringCellValue();
+                    universityId = row.getCell(0).getStringCellValue();
+                    fullName = row.getCell(1).getStringCellValue();
                     currentCourseNumber = row.getCell(2).getNumericCellValue();
                     avgExamScore = row.getCell(3).getNumericCellValue();
 
