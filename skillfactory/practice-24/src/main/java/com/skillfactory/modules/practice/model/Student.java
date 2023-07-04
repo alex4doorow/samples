@@ -1,10 +1,16 @@
 package com.skillfactory.modules.practice.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Student {
 
+    @SerializedName("FullName")
     private String fullName;
+    @SerializedName("UniversityID")
     private String universityId;
+    @SerializedName("CurrentCourseNumber")
     private int currentCourseNumber;
+    @SerializedName("AvgExamScore")
     private float avgExamScore;
 
     public Student() {

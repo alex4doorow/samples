@@ -1,13 +1,19 @@
 package com.skillfactory.modules.practice.model;
 
+import com.google.gson.annotations.SerializedName;
 import com.skillfactory.modules.practice.type.StudyProfile;
 
 public class University {
 
+    @SerializedName("ID")
     private String id;
+    @SerializedName("FullName")
     private String fullName;
+    @SerializedName("ShortName")
     private String shortName;
+    @SerializedName("YearOfFoundation")
     private int yearOfFoundation;
+    @SerializedName("MainProfile")
     private StudyProfile mainProfile;
 
     public University() {

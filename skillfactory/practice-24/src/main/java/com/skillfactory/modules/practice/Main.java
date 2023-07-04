@@ -7,6 +7,8 @@ import com.skillfactory.modules.practice.model.comparator.UniversityComparator;
 import com.skillfactory.modules.practice.type.StudentComparators;
 import com.skillfactory.modules.practice.type.UniversityComparators;
 import com.skillfactory.modules.practice.utils.ComparatorUtils;
+import com.skillfactory.modules.practice.utils.JsonUtil;
+import org.apache.commons.io.output.CloseShieldOutputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,7 +36,7 @@ public class Main {
         log.info("studentComparators: {}", studentComparators);
 
         List<University> universities = ExcelLoader.loadUniversitiesFromExcel("C:\\src\\--1-skillfactory\\java\\samples\\skillfactory\\practice-24\\src\\main\\resources\\universityInfo.xlsx");
-        universityComparators.stream().forEach(comparator -> {
+        universityComparators.forEach(comparator -> {
             log.info("*** u comparator: {}", comparator.getClass());
             universities.stream()
                     .sorted(comparator)
@@ -42,12 +44,37 @@ public class Main {
         });
 
         List<Student> students = ExcelLoader.loadStudentsFromExcel("C:\\src\\--1-skillfactory\\java\\samples\\skillfactory\\practice-24\\src\\main\\resources\\universityInfo.xlsx");
-        studentComparators.stream().forEach(comparator -> {
+        studentComparators.forEach(comparator -> {
             log.info("*** s comparator: {}", comparator.getClass());
             students.stream()
                     .sorted(comparator)
                     .forEach(System.out::println);
         });
         log.info("universities: {}", universities);
+
+        log.info("gson serializable universities: {}", JsonUtil.universitiesToJson(universities));
+        log.info("gson serializable students: {}", JsonUtil.studentsToJson(students));
+
+        List<University> nUniversities = JsonUtil.jsonToUniversities(JsonUtil.universitiesToJson(universities));
+        List<Student> nStudents = JsonUtil.jsonToStudents(JsonUtil.studentsToJson(students));
+
+        assert nUniversities.size() == universities.size();
+        assert nStudents.size() == students.size();
+
+        log.info("serialization universities:");
+        universities.forEach(u -> {
+            String nu = JsonUtil.universityToJson(u);
+            System.out.println(nu);
+            University nUniversity = JsonUtil.jsonToUniversity(nu);
+            System.out.println(nUniversity);
+        });
+
+        log.info("serialization students:");
+        students.forEach(s -> {
+            String ns = JsonUtil.studentToJson(s);
+            System.out.println(ns);
+            Student nStudent = JsonUtil.jsonToStudent(ns);
+            System.out.println(nStudent);
+        });
     }
 }
