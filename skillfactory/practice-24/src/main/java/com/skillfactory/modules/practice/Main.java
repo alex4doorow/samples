@@ -1,5 +1,8 @@
 package com.skillfactory.modules.practice;
 
+import com.skillfactory.modules.practice.io.ExcelLoader;
+import com.skillfactory.modules.practice.io.XlsWriter;
+import com.skillfactory.modules.practice.model.Statistics;
 import com.skillfactory.modules.practice.model.Student;
 import com.skillfactory.modules.practice.model.University;
 import com.skillfactory.modules.practice.model.comparator.StudentComparator;
@@ -8,7 +11,7 @@ import com.skillfactory.modules.practice.type.StudentComparators;
 import com.skillfactory.modules.practice.type.UniversityComparators;
 import com.skillfactory.modules.practice.utils.ComparatorUtils;
 import com.skillfactory.modules.practice.utils.JsonUtil;
-import org.apache.commons.io.output.CloseShieldOutputStream;
+import com.skillfactory.modules.practice.utils.StatisticsUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -76,5 +79,9 @@ public class Main {
             Student nStudent = JsonUtil.jsonToStudent(ns);
             System.out.println(nStudent);
         });
+
+        List<Statistics> statisticsList = StatisticsUtils.createStatistics(students, universities);
+        XlsWriter.writeXlsStatistics(statisticsList,
+                "C:\\src\\--1-skillfactory\\java\\samples\\skillfactory\\practice-24\\src\\main\\resources\\statistic.xlsx");
     }
 }
