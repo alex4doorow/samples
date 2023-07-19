@@ -15,9 +15,11 @@ import com.skillfactory.modules.practice.utils.StatisticsUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.logging.LogManager;
 
 
 public class Main {
@@ -25,6 +27,12 @@ public class Main {
     private static final Logger log = LoggerFactory.getLogger(Main.class);
 
     public static void main(String[] args) {
+
+        try {
+            LogManager.getLogManager().readConfiguration(Main.class.getResourceAsStream("/logging.properties"));
+        } catch (IOException e) {
+            System.err.println("Could not setup logger configuration: " + e.toString());
+        }
 
         List<StudentComparator> studentComparators = new ArrayList<>();
         Arrays.stream(StudentComparators.values()).forEach(sc -> {
@@ -67,17 +75,17 @@ public class Main {
         log.info("serialization universities:");
         universities.forEach(u -> {
             String nu = JsonUtil.universityToJson(u);
-            System.out.println(nu);
+            log.debug("{}", nu);
             University nUniversity = JsonUtil.jsonToUniversity(nu);
-            System.out.println(nUniversity);
+            log.debug("{}", nUniversity);
         });
 
         log.info("serialization students:");
         students.forEach(s -> {
             String ns = JsonUtil.studentToJson(s);
-            System.out.println(ns);
+            log.debug("{}", ns);
             Student nStudent = JsonUtil.jsonToStudent(ns);
-            System.out.println(nStudent);
+            log.debug("{}", nStudent);
         });
 
         List<Statistics> statisticsList = StatisticsUtils.createStatistics(students, universities);

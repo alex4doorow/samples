@@ -25,6 +25,8 @@ public class StatisticsUtils {
 
     public static List<Statistics> createStatistics(List<Student> students, List<University> universities) {
 
+        log.debug("Statistics module: begin");
+
         List<Statistics> statisticsList = new ArrayList<>();
 
         Set<StudyProfile> profiles = universities.stream()
@@ -56,6 +58,7 @@ public class StatisticsUtils {
         });
 
         log.info("{}", statisticsList);
+        log.debug("Statistics module: finish");
         return statisticsList;
     }
 }
