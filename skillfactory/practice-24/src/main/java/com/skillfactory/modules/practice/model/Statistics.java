@@ -1,17 +1,24 @@
 package com.skillfactory.modules.practice.model;
 
 import com.skillfactory.modules.practice.type.StudyProfile;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class Statistics {
 
-    private static final Logger log = LoggerFactory.getLogger(Statistics.class);
-
+    @XmlElement(name = "profile")
     private StudyProfile profile;
+    @XmlElement(name = "avgExamScore")
     private double avgExamScore;
+
+    @XmlElement(name = "numberOfStudents")
     private int numberOfStudents;
+    @XmlElement(name = "numberOfUniversities")
     private int numberOfUniversities;
+    @XmlElement(name = "universityNames")
     private String universityNames;
 
     public StudyProfile getProfile() {
