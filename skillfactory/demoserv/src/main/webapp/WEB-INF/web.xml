@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
+         version="4.0">
+
+    <display-name>TestServlet</display-name>
+    <!--Настройка для фильтра-->
+    <!--указывает на класс фильтра-->
+    <filter>
+        <filter-name>TestFilter</filter-name> <!--указывает имя фильтра-->
+        <filter-class>com.example.serv.TestFilter</filter-class>
+    </filter>
+    <!--Указывает на адрес, по которому надо смонтировать фильтр-->
+    <filter-mapping>
+        <filter-name>TestFilter</filter-name>
+        <url-pattern>/TestServlet</url-pattern>
+    </filter-mapping>
+
+    <!--Настройка для сервлета.-->
+    <!--Указывает на класс сервлета.-->
+    <servlet>
+        <servlet-name>TestServlet</servlet-name>
+        <servlet-class>com.example.serv.TestServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PrintLog</servlet-name>
+        <servlet-class>com.example.serv.PrintLog</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>Database</servlet-name>
+        <servlet-class>com.example.serv.DataBase</servlet-class>
+    </servlet>
+
+    <!--Указывает на адрес, по которому надо смонтировать сервлет-->
+    <servlet-mapping>
+        <servlet-name>TestServlet</servlet-name>
+        <url-pattern>/TestServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PrintLog</servlet-name>
+        <url-pattern>/logger</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Database</servlet-name>
+        <url-pattern>/database</url-pattern>
+    </servlet-mapping>
+
+</web-app>
