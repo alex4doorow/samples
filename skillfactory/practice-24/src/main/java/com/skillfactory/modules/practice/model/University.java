@@ -3,17 +3,27 @@ package com.skillfactory.modules.practice.model;
 import com.google.gson.annotations.SerializedName;
 import com.skillfactory.modules.practice.type.StudyProfile;
 
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlElement;
+
+@XmlAccessorType(XmlAccessType.FIELD)
 public class University {
 
     @SerializedName("ID")
+    @XmlElement(name = "ID")
     private String id;
     @SerializedName("FullName")
+    @XmlElement(name = "FullName")
     private String fullName;
     @SerializedName("ShortName")
+    @XmlElement(name = "ShortName")
     private String shortName;
     @SerializedName("YearOfFoundation")
+    @XmlElement(name = "YearOfFoundation")
     private int yearOfFoundation;
     @SerializedName("MainProfile")
+    @XmlElement(name = "YearOfFoundation")
     private StudyProfile mainProfile;
 
     public University() {

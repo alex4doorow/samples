@@ -1,7 +1,10 @@
 package com.skillfactory.modules.practice;
 
 import com.skillfactory.modules.practice.io.ExcelLoader;
+import com.skillfactory.modules.practice.io.JsonWriter;
 import com.skillfactory.modules.practice.io.XlsWriter;
+import com.skillfactory.modules.practice.io.XmlWriter;
+import com.skillfactory.modules.practice.model.FullInfo;
 import com.skillfactory.modules.practice.model.Statistics;
 import com.skillfactory.modules.practice.model.Student;
 import com.skillfactory.modules.practice.model.University;
@@ -12,19 +15,28 @@ import com.skillfactory.modules.practice.type.UniversityComparators;
 import com.skillfactory.modules.practice.utils.ComparatorUtils;
 import com.skillfactory.modules.practice.utils.JsonUtil;
 import com.skillfactory.modules.practice.utils.StatisticsUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Date;
 import java.util.List;
+import java.util.logging.LogManager;
 
 
+@Slf4j
 public class Main {
 
-    private static final Logger log = LoggerFactory.getLogger(Main.class);
-
     public static void main(String[] args) {
+
+        try {
+            LogManager.getLogManager().readConfiguration(Main.class.getResourceAsStream("/logging.properties"));
+        } catch (IOException e) {
+            System.err.println("Could not setup logger configuration: " + e.toString());
+        }
 
         List<StudentComparator> studentComparators = new ArrayList<>();
         Arrays.stream(StudentComparators.values()).forEach(sc -> {
@@ -67,21 +79,32 @@ public class Main {
         log.info("serialization universities:");
         universities.forEach(u -> {
             String nu = JsonUtil.universityToJson(u);
-            System.out.println(nu);
+            log.debug("{}", nu);
             University nUniversity = JsonUtil.jsonToUniversity(nu);
-            System.out.println(nUniversity);
+            log.debug("{}", nUniversity);
         });
 
         log.info("serialization students:");
         students.forEach(s -> {
             String ns = JsonUtil.studentToJson(s);
-            System.out.println(ns);
+            log.debug("{}", ns);
             Student nStudent = JsonUtil.jsonToStudent(ns);
-            System.out.println(nStudent);
+            log.debug("{}", nStudent);
         });
 
         List<Statistics> statisticsList = StatisticsUtils.createStatistics(students, universities);
         XlsWriter.writeXlsStatistics(statisticsList,
                 "C:\\src\\--1-skillfactory\\java\\samples\\skillfactory\\practice-24\\src\\main\\resources\\statistic.xlsx");
+
+        FullInfo fullInfo = new FullInfo()
+                .setStudentList(students)
+                .setUniversityList(universities)
+                .setStatisticsList(statisticsList)
+                .setProcessDate(new Date());
+
+        XmlWriter.generateXmlReq(fullInfo);
+        JsonWriter.writeJsonReq(fullInfo);
+
+        log.info("Application finished");
     }
 }

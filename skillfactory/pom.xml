@@ -15,6 +15,7 @@
         <module>nosql-mongodb</module>
         <module>practice-24</module>
         <module>sf-m25-sl4j</module>
+        <module>demoserv</module>
     </modules>
     <packaging>pom</packaging>
 
