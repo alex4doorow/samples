@@ -31,7 +31,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -42,7 +41,6 @@
 			<artifactId>postgresql</artifactId>
 			<version>42.2.18</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web-services</artifactId>
@@ -62,7 +60,6 @@
 			<artifactId>jaxb-impl</artifactId>
 			<version>2.3.0</version>
 		</dependency>
-
 		<!-- xml.ws module -->
 		<dependency>
 			<groupId>javax.xml.ws</groupId>
@@ -74,14 +71,12 @@
 			<artifactId>jaxws-rt</artifactId>
 			<version>2.3.0</version>
 		</dependency>
-
 		<!-- javax.activation -->
 		<dependency>
 			<groupId>javax.activation</groupId>
 			<artifactId>activation</artifactId>
 			<version>1.1.1</version>
 		</dependency>
-
 		<!-- wsimport -->
 		<dependency>
 			<groupId>com.sun.xml.ws</groupId>
@@ -89,19 +84,16 @@
 			<version>2.3.1</version>
 			<scope>compile</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>3.11</version>
 		</dependency>
-
 		<dependency>
 			<groupId>com.github.xabgesagtx</groupId>
 			<artifactId>telegram-spring-boot-starter</artifactId>
-			<version>0.26</version>
+			<version>0.25</version>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
@@ -129,7 +121,6 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-
 	<build>
 		<plugins>
 			<plugin>
@@ -146,5 +137,4 @@
 			</plugin>
 		</plugins>
 	</build>
-
 </project>
