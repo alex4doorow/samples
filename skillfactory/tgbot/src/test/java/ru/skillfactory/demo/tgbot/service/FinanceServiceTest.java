@@ -1,5 +1,6 @@
 package ru.skillfactory.demo.tgbot.service;
 
+import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.*;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -14,6 +15,7 @@ import ru.skillfactory.demo.tgbot.repository.SpendRepository;
 @SpringBootTest
 // указываем, что инстанс теста создаётся на весь класс (т.е. для отработки всех методов)
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
+@Slf4j
 class FinanceServiceTest {
 
     // упоминание нашего сервиса c аннотацией, которая имитирует сервис
@@ -33,13 +35,13 @@ class FinanceServiceTest {
     // запишем время, когда начался каждый тест
     @BeforeEach
     public void beforeAll() {
-        System.out.println(System.currentTimeMillis());
+        log.debug("start test: {}", System.currentTimeMillis());
     }
 
     // запишем время, когда закончился каждый тест
     @AfterEach
     public void afterEach() {
-        System.out.println(System.currentTimeMillis());
+        log.debug("end test: {}", System.currentTimeMillis());
     }
 
     // тестовый метод для первого кейса
